@@ -1,0 +1,152 @@
+:root {
+  --bg-color: #000;
+  --text-color: #fff;
+  --card-color: #111;
+}
+
+[data-theme="light"] {
+  --bg-color: #fff;
+  --text-color: #000;
+  --card-color: #eee;
+}
+
+[data-theme="dark"] {
+  --bg-color: #000;
+  --text-color: #fff;
+  --card-color: #111;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Cursor para desktop apenas */
+@media (min-width: 768px) {
+  body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M16 29s-13-8-13-17c0-4.418 3.582-8 8-8 2.5 0 5 1.5 5 1.5S21.5 4 24 4c4.418 0 8 3.582 8 8 0 9-13 17-13 17z" fill="red"/></svg>') 16 16, auto;
+  }
+}
+
+.container {
+  text-align: center;
+}
+
+.input-box {
+  background: var(--card-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+input[type="date"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: crimson;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: darkred;
+}
+
+.settings {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: var(--card-color);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+select {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.letter {
+  position: fixed;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  background: var(--card-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 999;
+}
+
+.letter.show {
+  top: 80px;
+  opacity: 1;
+}
+
+.message {
+  margin-top: 20px;
+  white-space: pre-line;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.counter {
+  margin-top: 20px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.heart {
+  position: fixed;
+  top: -20px;
+  color: red;
+  font-size: 24px;
+  animation: fall linear forwards;
+  z-index: 998;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Spotify flutuante */
+#spotifyPlayer iframe {
+  border-radius: 12px;
+}
+
+/* Responsividade geral */
+@media (max-width: 767px) {
+  .letter {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
