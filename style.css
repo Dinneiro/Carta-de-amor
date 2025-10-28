@@ -21,22 +21,29 @@ body {
   font-family: Arial, sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
-  height: 100vh;
+  min-height: 100vh; /* Ajustado para min-height para permitir scroll em mobile */
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  padding: 10px; /* Adiciona um pequeno padding geral */
+  box-sizing: border-box;
 }
 
 /* Cursor para desktop apenas */
 @media (min-width: 768px) {
   body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M16 29s-13-8-13-17c0-4.418 3.582-8 8-8 2.5 0 5 1.5 5 1.5S21.5 4 24 4c4.418 0 8 3.582 8 8 0 9-13 17-13 17z" fill="red"/></svg>') 16 16, auto;
+    /* Em desktop, voltamos a centralizar verticalmente e ocultar overflow */
+    height: 100vh;
+    overflow: hidden; 
   }
 }
 
 .container {
   text-align: center;
+  width: 90%; /* Ajuste para melhor aproveitamento em mobile */
+  max-width: 400px; /* Limite de largura para desktop */
 }
 
 .input-box {
@@ -52,6 +59,8 @@ input[type="date"] {
   border: none;
   outline: none;
   font-size: 16px;
+  width: 100%; /* Ocupa a largura total da caixa em mobile */
+  box-sizing: border-box;
 }
 
 button {
@@ -64,6 +73,8 @@ button {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s;
+  width: 100%; /* Ocupa a largura total da caixa em mobile */
+  max-width: 250px; /* Limita o tamanho em telas maiores */
 }
 
 button:hover {
@@ -78,6 +89,17 @@ button:hover {
   padding: 10px;
   border-radius: 8px;
   z-index: 1000;
+  /* Ajuste de posição para mobile */
+  /* Em telas menores, pode ser melhor movê-lo */
+}
+
+/* Movendo o settings para o canto superior esquerdo em mobile */
+@media (max-width: 767px) {
+  .settings {
+    top: 10px;
+    left: 10px;
+    right: auto;
+  }
 }
 
 select {
@@ -142,11 +164,12 @@ select {
   border-radius: 12px;
 }
 
-/* Responsividade geral */
+/* Responsividade geral da Carta */
 @media (max-width: 767px) {
   .letter {
     width: 90%;
     left: 50%;
     transform: translateX(-50%);
+    box-sizing: border-box; /* Garante que o padding não exceda o 90% */
   }
 }
